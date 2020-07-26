@@ -1,0 +1,45 @@
+body {
+    background-color: #3C3F41;
+    color: #BBBBBB;
+    font-family: Helvetica, SimSun;
+    font-size: 20px;
+}
+
+a {
+    color: rgb(63, 144, 173);
+    text-decoration: none
+}
+
+button, input {
+    color: rgb(71, 150, 84);
+    background-color: #BBBBBB;
+}
+
+.meta {
+    color: rgb(132, 133, 4);
+}
+
+.green {
+    color: rgb(87, 146, 66);
+}
+
+.red{
+    color: rgb(208, 102, 81);
+}
+
+#wrap {
+    margin: 7px;
+}
+
+#kxzd p, #gswy p {
+    padding-left: 2em;
+}
+
+#xxpage ul{
+    float: left;
+}
+
+#footer{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

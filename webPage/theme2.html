@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+    <title>macOS（或 Linux）缺失的软件包的管理器 — Homebrew</title>
+    <style>
+	p a{color:green;}
+	</style>
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Homebrew" />
+<meta property="og:locale" content="zh_cn" />
+<meta name="description" content="The Missing Package Manager for macOS (or Linux)." />
+<meta property="og:description" content="The Missing Package Manager for macOS (or Linux)." />
+<link rel="canonical" href="https://brew.sh/index_zh-cn" />
+<meta property="og:url" content="https://brew.sh/index_zh-cn" />
+<meta property="og:site_name" content="Homebrew" />
+<meta property="og:image" content="https://brew.sh/assets/img/homebrew-social-card.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://brew.sh/assets/img/homebrew-social-card.png" />
+<meta property="twitter:title" content="Homebrew" />
+<meta name="twitter:site" content="@MacHomebrew" />
+<meta property="article:publisher" content="https://www.facebook.com/machomebrew/" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Homebrew","url":"https://brew.sh/index_zh-cn","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://brew.sh/assets/img/homebrew-256x256.png"}},"image":"https://brew.sh/assets/img/homebrew-social-card.png","description":"The Missing Package Manager for macOS (or Linux).","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="https://brew.sh/atom.xml" title="Homebrew" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="mini.css" type="text/css" media="screen">
+  
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header" class="">
+        
+        <img alt="Homebrew logo" src="logo.png" width="128" height="128">
+        
+        <h1><a href="/">造字法</a></h1>
+        
+        <p id="subtitle"><strong>造字原理基于说文解字、甲骨文、金文、竹简汉字</strong></p>
+        
+		<p>
+  <a href="#" class="logo">Logo</a>
+  <a href="#" class="button">Home</a>
+</p>
+        <div>
+          <input
+            
+            type="search"
+            name="search-bar"
+            id="search-bar"
+            placeholder="Search Homebrew"
+          />
+        </div>
+
+        
+        
+	<div>
+	<button>submit</button>
+		</div>
+        
+      </div>
+
+      
+<div id="information">
+  <ul>
+    <li>
+      <div class="group row">
+        <h2 id="install">安装 Homebrew</h2>
+        <br>
+        <pre style='clear:both;text-align:center;margin-bottom:0.9em'><code id='selectable' onclick="selectText(this)">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre>
+
+        <div class="col-1">
+          <p>将以上命令粘贴至终端。</p>
+        </div>
+        <div class="col-2">
+          <p>脚本会在执行前暂停，并说明它将做什么。高级安装选项在 <a href='https://docs.brew.sh/Installation'>这里</a> (required for Linux and Windows Subsystem for Linux)。</p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+       <h2 id="question">Homebrew 能干什么?</h2>
+       <br>
+        <div class="col-1">
+          <p>使用 Homebrew 安装 Apple（或您的 Linux 系统）没有预装但 <a href="https://formulae.brew.sh/formula/" title="Homebrew 软件包列表">你需要的东西</a>。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew <span class="nb">install </span>wget</code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>Homebrew 会将软件包安装到独立目录，并将其文件软链接至 <code>/usr/local</code> 。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> /usr/local
+<span class="nv">$ </span>find Cellar
+Cellar/wget/1.16.1
+Cellar/wget/1.16.1/bin/wget
+Cellar/wget/1.16.1/share/man/man1/wget.1
+
+<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> bin
+bin/wget -&gt; ../Cellar/wget/1.16.1/bin/wget</code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>Homebrew 不会将文件安装到它本身目录之外，所以您可将 Homebrew 安装到任意位置。</p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>轻松创建你自己的 Homebrew 包。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew create https://foo.com/bar-1.0.tgz
+Created /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/bar.rb</code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>完全基于 Git 和 Ruby，所以自由修改的同时你仍可以轻松撤销你的变更或与上游更新合并。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew edit wget <span class="c"># 使用 $EDITOR 编辑!</span></code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>Homebrew 的配方都是简单的 Ruby 脚本：</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Wget</span> <span class="o">&lt;</span> <span class="no">Formula</span>
+  <span class="n">homepage</span> <span class="s2">"https://www.gnu.org/software/wget/"</span>
+  <span class="n">url</span> <span class="s2">"https://ftp.gnu.org/gnu/wget/wget-1.15.tar.gz"</span>
+  <span class="n">sha256</span> <span class="s2">"52126be8cf1bddd7536886e74c053ad7d0ed2aa89b4b630f76785bac21695fcd"</span>
+
+  <span class="k">def</span> <span class="nf">install</span>
+    <span class="nb">system</span> <span class="s2">"./configure"</span><span class="p">,</span> <span class="s2">"--prefix=</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">system</span> <span class="s2">"make"</span><span class="p">,</span> <span class="s2">"install"</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>Homebrew 使 macOS（或您的 Linux 系统）更完整。使用 <code>gem</code> 来安装 RubyGems、用 <code>brew</code> 来安装那些依赖包。</p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>“要安装，请拖动此图标......”不会再出现了。使用 <code>brew cask</code> 安装 macOS 应用程序、字体和插件以及其他非开源软件。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew cask <span class="nb">install </span>firefox</code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <div class="col-1">
+          <p>制作一个 cask 就像创建一个配方一样简单。</p>
+        </div>
+        <div class="col-2">
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew cask create foo
+Editing /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask/Casks/foo.rb</code></pre></figure>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="further-doc">更多文档</h2>
+        <div class="button">
+          <p><a href="https://docs.brew.sh">docs.brew.sh</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="homebrew-donate">捐赠给 Homebrew</h2>
+        <div class="button">
+          <p><a href="https://github.com/homebrew/brew#donations">Homebrew/brew#donations</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="homebrew-community">开发者讨论区</h2>
+        <div class="button">
+          <p><a href="https://discourse.brew.sh">discourse.brew.sh</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="homebrew-blog">Homebrew 博客</h2>
+        <div class="button">
+          <p><a href="/blog/">brew.sh/blog</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="homebrew-formulae">Homebrew Packages</h2>
+        <div class="button">
+          <p><a href="https://formulae.brew.sh/">formulae.brew.sh</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row">
+        <h2 id="analytics-data">Analytics Data</h2>
+        <div class="button">
+          <p><a href="https://formulae.brew.sh/analytics/">formulae.brew.sh/analytics</a></p>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="group row credits">
+        <p>Homebrew 创建者：<a href="https://mxcl.github.io/">Max Howell</a>。 网站搭建者：<a href="https://exomel.com/">Rémi Prévost</a>, <a href="https://mikemcquaid.com">Mike McQuaid</a> 和 <a href="https://cargocollective.com/danilalo">Danielle Lalonde</a>。<br></p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+    </div>
+
+    
+
+    <a href="https://github.com/Homebrew/brew"><img id="forkme" src="https://aral.github.io/fork-me-on-github-retina-ribbons/right-grey@2x.png" alt="Fork me on GitHub"></a>
+    <script>
+      function selectText(elem) {
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(elem);
+            range.select();
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(elem);
+            window.getSelection().addRange(range);
+        }
+      }
+
+      function loadLanguage(lang) {
+        if (lang === "zh-cn") {
+            return;
+        } else if (lang === "en") {
+            window.location.assign("/");
+        } else {
+            window.location.assign("/index_" + lang);
+        }
+      }
+
+      function loadAnchors() {
+        anchors.options = {
+          placement: 'left',
+          visible: 'touch',
+        };
+        anchors.add('#page > h2, #page > h3, #page > h4, #page > h5, #page > h6');
+      };
+
+      function loadSearch(lang, site) {
+        docsearch(Object.assign(
+          { algoliaOptions: { facetFilters: ['lang: ' + lang, 'site: ' + site] } },
+          {"apiKey":"a57ef92bf2adfae863a201ee43d6b5a1","indexName":"brew_all","inputSelector":"#search-bar"}
+        ));
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"
+            integrity="sha256-m1eTvwEHwmsw4+XKF7BshClVJEPwTVycveNl0CS0Mkk="
+            crossorigin="anonymous"
+            onload="loadAnchors()" async></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+            onload="loadSearch('zh-cn', '')" async></script>
+  </body>
+</html>
