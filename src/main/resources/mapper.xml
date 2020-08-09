@@ -42,4 +42,8 @@
         where comments is not null and comments <![CDATA[<>]]> ''
         order by lastupdate desc limit 100
     </select>
+
+    <update id="updateimg" parameterType="map">
+        update sw set img = #{img} where zi like '%${zi}%' and zi not like '%【%'
+    </update>
 </mapper>

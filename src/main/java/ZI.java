@@ -72,7 +72,6 @@ public class ZI {
                     printWriter.write("    <meta name=\"keywords\" content=\"汉字，说文解字，甲骨文\">\n");
                     printWriter.write("    <meta name=\"description\" content=\"造字法，汉字，简体字，甲骨文，金文，异体字，音韵方言，部首笔画，康熙字典，说文解字，字源字形\" />\n");
                     printWriter.write("    <link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" />\n");
-                    printWriter.write("    <script src=\"zaozifa.js\"></script>\n");
                     printWriter.write("    <title>");
                     printWriter.write(zi);
                     printWriter.write("的解释，造字原理及甲骨文金文古文字，及古语用例，及说文解字 - 造字法</title>\n");
@@ -110,14 +109,14 @@ public class ZI {
                     if (img != null) {
                         String[] imgs = img.split(";");
                         for (int i = 0; i < imgs.length; i++) {
-                            printWriter.write("            <img src=\"/ziimg/");
+                            printWriter.write("            <img src=\"/img/sw/");
                             printWriter.write(imgs[i]);
                             printWriter.write("\"/>\n");
+                            System.out.println(yin + key1);
                         }
                     }
+                    printWriter.write("</p>\n");
 
-
-                    printWriter.write("        </p>\n");
                     printWriter.write("        <p class=\"green\"><strong class=\"red\">发声：</strong>");
                     printWriter.write(yin==null?"":yin);
                     printWriter.write("</p>\n");
