@@ -1,8 +1,7 @@
 body {
-    background-color: #3C3F41;
-    color: #BBBBBB;
-    font-family: Helvetica, SimSun;
-    font-size: 20px;
+    background-color: #F1f1f1;
+    color: #444;
+    font: 400 16px/1.7 "Microsoft JhengHei", sans-serif;
 }
 
 a {
@@ -28,7 +27,20 @@ button, input {
 }
 
 #wrap {
-    margin: 7px;
+    width: 822px;
+    margin: 0 auto;
+}
+
+#header {
+    text-align: center;
+}
+
+#nav span{
+    padding: 0px 10px;
+}
+
+#content h1 {
+    text-align: center;
 }
 
 #kxzd p, #gswy p {
@@ -42,4 +54,11 @@ button, input {
 #footer{
     margin-top: 30px;
     margin-bottom: 30px;
+}
+@media (max-width: 767px){
+    #wrap {
+        width: fit-content;
+        padding: 10px 20px;
+        font-size:20px;
+    }
 }

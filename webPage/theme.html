@@ -1,38 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="汉字，说文解字，甲骨文">
+    <meta name="description" content="造字法，汉字，简体字，甲骨文，金文，异体字，音韵方言，部首笔画，康熙字典，说文解字，字源字形" />
     <title>Title</title>
-    <script src="zaozifa.js"></script>
-    <link rel="stylesheet" href="zaozifa.css">
+    <script src="/zaozifa.js"></script>
+    <link rel="stylesheet" href="/zaozifa.css?v=12">
 </head>
 <body>
 <div id="wrap">
     <div id="header" class="">
-        <img alt="Homebrew logo" src="logo.png" width="64px" height="64px">
+        <img alt="zaozifa logo" src="/logo.png" width="64px" height="64px">
         <h2><a href="/">造字法</a></h2>
         <p id="subtitle" class="meta"><strong>造字原理基于说文解字、甲骨文、金文、竹简汉字</strong></p>
         <p id="nav">
-            <a href="#" class="logo">首页</a>
-            <a href="#" class="button">汉字按部索引</a>
-            <a href="#" class="button">相关古书</a>
+            <a href="/">首页</a>
+            <span>·</span>
+            <a href="/ABCD.html">始于象形</a>
+            <span>·</span>
+            <a href="/lastupdate.html">更新</a>
+            <span>·</span>
+            <a href="/readme.html">注意</a>
         </p>
-        <div>
-            <input type="search" name="search-bar" id="search-bar" placeholder="Search Homebrew"/>
-            <button>submit</button>
+        <div id="searchbox">
+            <input type="text" id="search"/>
+            <button>Baidu</button>
+            <button>Google</button>
         </div>
     </div>
     <div id="content">
         <h1>漢汉㵄</h1>
         <p>
-            <img src="ziimg/whan.png"/>
+            <img src="/ziimg/whan.png"/>
         </p>
-        <p class="green">发声：han </p>
-        <p class="green">部件：水堇</p>
-        <p><strong class="red">造字法漢：</strong>声部堇，堇者天冷万物龟缩也，此加水谓水产多奇丰富，银汉所以谓银汉，亦因其纳万星，又或天上之川也，与汉水地之川呼应，见渭造字法。语尚书禹貢曰嶓冢導漾，東流爲漢。
+        <p class="green"><strong class="red">发声：</strong>han </p>
+        <p class="green"><strong class="red">部件：</strong>水堇</p>
+        <p><strong class="red">【造字法】漢：</strong>声部堇，堇者天冷万物龟缩也，此加水谓水产多奇丰富，银汉所以谓银汉，亦因其纳万星，又或天上之川也，与汉水地之川呼应，见渭造字法。语尚书禹貢曰嶓冢導漾，東流爲漢。
         </p>
-        <p><strong class="meta">说文解字漢：</strong>漾也。東爲滄浪水。从水，難省聲。</p>
-        <div id="kxzd"><strong class="meta">康熙字典漢：</strong><br>
+        <p><strong class="meta">【说文解字】漢：</strong>漾也。東爲滄浪水。从水，難省聲。</p>
+        <div id="kxzd"><strong class="meta">【康熙字典】漢：</strong><br>
             <p>
                 㵄【唐韻】呼旰切【集韻】虛旰切【韻會】【正韻】虛汗切，音熯。水名。【書·禹貢】嶓冢導漾，東流爲漢。
                 <br><br>
@@ -56,7 +64,7 @@
             </p>
         </div>
 
-        <div id="gswy"><strong class="meta">古书物语漢：</strong><br>
+        <div id="gswy"><strong class="meta">【古书物语】漢：</strong><br>
             <p>
                 「吾不得志於<i class="b">漢</i>東也，我則使然。我張吾三軍，而被吾甲兵，以武臨之。彼則懼而協以謀我，故難間也。漢東之國，隨為大。隨張，必棄小國。小國離，楚之利也。少師侈，請羸師以張之。」熊率且比曰：「季梁在，何益？」鬬伯比曰：「以為後圖，少師得其君。」[左傳]
                 <br><br>
@@ -84,34 +92,14 @@
     </div>
 
     <div style="padding: 2em">
-        <a href="dasang.html">赏</a>
+        <a href="/dasang.html">赏</a>
     </div>
 
     <div id="footer">
         <p>
-            <a>历史版本</a>
+            <a href="https://github.com/zaozifa/ZaozifaWebProject">历史版本</a>
+            <span>·</span>
             <a href="about.html">关于本站</a>
-
-            <select>
-                <option value="">字体</option>
-                <option value="">宋体</option>
-                <option value="">微软雅黑</option>
-                <option value="">黑体</option>
-                <option value="">隶体</option>
-                <option value="">隶体</option>
-            </select>
-            <select>
-                <option value="">字大小</option>
-                <option value="">14px</option>
-                <option value="">16px</option>
-                <option value="">18px</option>
-                <option value="">20px</option>
-                <option value="">22px</option>
-                <option value="">24px</option>
-                <option value="">26px</option>
-                <option value="">28px</option>
-                <option value="">30px</option>
-            </select>
         </p>
     </div>
 </div>
