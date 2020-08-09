@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ziMapper">
+
+    <select id="queryZi" parameterType="int" resultType="map">
+        SELECT id,zi from sw limit #{lm};
+    </select>
+
+    <select id="queryMap" parameterType="int" resultType="map">
+        SELECT id,zi from sw;
+    </select>
+
+    <update id="updateAlike" parameterType="string">
+        update sw set alike = #{alike}
+    </update>
+
+    <select id="selectAlike" resultType="string">
+        select alike from sw limit 1
+    </select>
+
+    <select id="allHanz" resultType="map">
+        select id,zi,yin,key1,kouyu,js,comments,jian,kx,img from sw
+        where js is not null and js <![CDATA[<>]]> '' and comments  <![CDATA[<>]]> '' and comments is not null
+    </select>
+
+    <select id="allxx" resultType="map">
+        select id,zi,yin,key1,kouyu,js,comments,jian,kx,img from sw
+        where comments is not null and comments <![CDATA[<>]]> '' and left(comments, 2) = '象形'
+        order by key1,length(key1)
+    </select>
+
+    <select id="allSubByJian" parameterType="string" resultType="map">
+        select id,zi,yin,key1,kouyu,js,comments,jian,kx,img from sw
+        where comments is not null and comments <![CDATA[<>]]> '' and BINARY right(jian, 1) = #{str} and jian <![CDATA[<>]]> zi
+        order by key1,length(key1)
+    </select>
+
+    <select id="lastupdate" resultType="map">
+        select id,zi,yin,key1,kouyu,js,comments,jian,kx,lastupdate from sw
+        where comments is not null and comments <![CDATA[<>]]> ''
+        order by lastupdate desc limit 100
+    </select>
+</mapper>

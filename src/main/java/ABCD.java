@@ -52,12 +52,11 @@ public class ABCD {
                 printWriter.write("    <meta name=\"keywords\" content=\"汉字，说文解字，甲骨文\">\n");
                 printWriter.write("    <meta name=\"description\" content=\"造字法，汉字，简体字，甲骨文，金文，异体字，音韵方言，部首笔画，康熙字典，说文解字，字源字形\" />\n");
                 printWriter.write("    <link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" />\n");
-                printWriter.write(" <script src=\"zaozifa.js\"></script>");
-                printWriter.write("");
-                printWriter.write("<title>象形码");
+                printWriter.write("    <script src=\"zaozifa.js\"></script>\n");
+                printWriter.write("    <title>象形码");
                 printWriter.write(index);
                 printWriter.write("系列及其属字会意字 - 造字法</title>");
-                printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css\"/>\n");
+                printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css?v=11\"/>\n");
                 printWriter.write("    <script src=\"/zaozifa.js\"></script>\n");
                 printWriter.write("</head>\n");
                 printWriter.write("<body>\n");

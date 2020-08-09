@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 
+    <!--properties 数据库连接配置-->
+    <properties>
+        <property name="jdbc.driver" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbc.url" value="jdbc:mysql://192.168.59.130:3306/zzfdb?characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"></property>
+        <property name="jdbc.username" value="root"></property>
+        <property name="jdbc.password" value="root"></property>
+    </properties>
+
+    <settings>
+        <setting name="vfsImpl" value=""/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+ 
+    <!--数据库环境配置-->
+    <environments default="mysql">
+        <environment id="test">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://localhost:3306/zaozifa?characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"></property>
+                <property name="username" value="xxx"></property>
+                <property name="password" value="xxx"></property>
+            </dataSource>
+        </environment>
+
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://192.168.59.130:3306/zzfdb?characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai"></property>
+                <property name="username" value="zzf"></property>
+                <property name="password" value="zzf"></property>
+            </dataSource>
+        </environment>
+
+
+    </environments>
+
+    <!--2. 加载映射文件-->
+    <mappers>
+        <mapper resource="mapper.xml"></mapper>
+    </mappers>
+</configuration>

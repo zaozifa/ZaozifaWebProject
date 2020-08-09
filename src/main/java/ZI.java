@@ -46,6 +46,7 @@ public class ZI {
                 String kouyu = ((String) map.get("kouyu"));
                 String kx = ((String) map.get("kx"));
                 String key1 = ((String) map.get("key1"));
+                String img = ((String) map.get("img"));
 
 
                 String prePath = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage" + File.separator;
@@ -71,12 +72,11 @@ public class ZI {
                     printWriter.write("    <meta name=\"keywords\" content=\"汉字，说文解字，甲骨文\">\n");
                     printWriter.write("    <meta name=\"description\" content=\"造字法，汉字，简体字，甲骨文，金文，异体字，音韵方言，部首笔画，康熙字典，说文解字，字源字形\" />\n");
                     printWriter.write("    <link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" />\n");
-                    printWriter.write(" <script src=\"zaozifa.js\"></script>\n");
-                    printWriter.write("");
-                    printWriter.write("<title>");
+                    printWriter.write("    <script src=\"zaozifa.js\"></script>\n");
+                    printWriter.write("    <title>");
                     printWriter.write(zi);
-                    printWriter.write(" - 造字法</title>\n");
-                    printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css\"/>\n");
+                    printWriter.write("的解释，造字原理及甲骨文金文古文字，及古语用例，及说文解字 - 造字法</title>\n");
+                    printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css?v=11\"/>\n");
                     printWriter.write("    <script src=\"/zaozifa.js\"></script>\n");
                     printWriter.write("</head>\n");
                     printWriter.write("<body>\n");
@@ -105,36 +105,55 @@ public class ZI {
                     printWriter.write(zi);
                     printWriter.write("</h1>\n");
                     printWriter.write("        <p>\n");
-                    printWriter.write("            <img src=\"/ziimg/whan.png\"/>\n");
+
+                    //img
+                    if (img != null) {
+                        String[] imgs = img.split(";");
+                        for (int i = 0; i < imgs.length; i++) {
+                            printWriter.write("            <img src=\"/ziimg/");
+                            printWriter.write(imgs[i]);
+                            printWriter.write("\"/>\n");
+                        }
+                    }
+
+
                     printWriter.write("        </p>\n");
-                    printWriter.write("        <p class=\"green\"><strong class=\"red\">发声：");
+                    printWriter.write("        <p class=\"green\"><strong class=\"red\">发声：</strong>");
                     printWriter.write(yin==null?"":yin);
                     printWriter.write("</p>\n");
-                    printWriter.write("        <p class=\"green\"><strong class=\"red\">部件：");
+                    printWriter.write("        <p class=\"green\"><strong class=\"red\">部件：</strong>");
                     printWriter.write(jian);
+                    printWriter.write("</p>\n");
+                    printWriter.write("        <p class=\"green\"><strong class=\"red\">象形码：</strong>");
+                    printWriter.write(key1==null?"":key1);
                     printWriter.write("</p>\n");
                     printWriter.write("        <p><strong class=\"red\">【造字法】");
                     printWriter.write(zi);
                     printWriter.write("：</strong>");
                     printWriter.write(comments);
-                    printWriter.write("        </p>\n");
+                    printWriter.write("</p>\n");
                     printWriter.write("        <p><strong class=\"meta\">【说文解字】");
                     printWriter.write(zi);
                     printWriter.write("：</strong>");
                     printWriter.write(js);
+                    printWriter.write("<p>\n");
                     printWriter.write("        <div id=\"kxzd\"><strong class=\"meta\">【康熙字典】");
                     printWriter.write(zi);
                     printWriter.write("：</strong><br>\n");
                     printWriter.write("            <p>\n");
                     printWriter.write(kx == null ?"":kx);
-                    printWriter.write("            </p>\n");
+                    printWriter.write("</p>\n");
                     printWriter.write("        </div>\n");
                     printWriter.write("        <div id=\"gswy\"><strong class=\"meta\">【古书物语】");
                     printWriter.write(zi);
                     printWriter.write("：</strong><br>\n");
                     printWriter.write("            <p>\n");
+
+                    if (kouyu != null)
+                        kouyu = kouyu.replaceAll("\n\n", "<br><br>");
+
                     printWriter.write(kouyu == null?"":kouyu);
-                    printWriter.write("            </p>\n");
+                    printWriter.write("</p>\n");
                     printWriter.write("        </div>\n");
                     printWriter.write("    </div>\n");
                     printWriter.write("    <div style=\"padding: 2em\">\n");
