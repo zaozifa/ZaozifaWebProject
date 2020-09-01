@@ -19,6 +19,9 @@ public class ZI {
 
     public static void main(String[] args) {
         try {
+            ABCD.main2(null);
+            Jian.main2(null);
+            LastUpdate.main2(null);
             InputStream inputStream = Resources.getResourceAsStream("config.xml");
             XMLConfigBuilder xmlConfigBuilder = new XMLConfigBuilder(inputStream, null, null);
             xmlConfigBuilder.parse();
@@ -47,6 +50,8 @@ public class ZI {
                 String kx = ((String) map.get("kx"));
                 String key1 = ((String) map.get("key1"));
                 String img = ((String) map.get("img"));
+                String cizu = ((String) map.get("cizu2"));
+                long id = ((long) map.get("id"));
 
 
                 String prePath = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage" + File.separator;
@@ -61,6 +66,76 @@ public class ZI {
                 } catch (Exception e) {
 
                 }
+
+                //获取字形图片
+                String jjw = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage\\img\\jjw";
+                String jw = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage\\img\\jw";
+                String zjw = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage\\img\\zjw";
+                String sw = "C:\\Users\\zhangxinwei\\IdeaProjects\\ZaozifaWebProject\\webPage\\img\\sw";
+
+                //map
+                HashMap<String , String > jjwMap = new HashMap<>();
+                HashMap<String , String > jwMap = new HashMap<>();
+                HashMap<String , String > zjwMap = new HashMap<>();
+                HashMap<String , String > swMap = new HashMap<>();
+
+                File file1 = new File(jjw);
+                File[] files = file1.listFiles();
+                for (File f : files) {
+                    String n = f.getName();
+                    int idx = n.indexOf('_');
+                    String n2 = n.substring(0, idx);
+                    if (jjwMap.get(n2) != null) {
+                        jjwMap.put(n2, String.valueOf(Integer.parseInt(jjwMap.get(n2)) + 1));
+                    } else {
+                        jjwMap.put(n.substring(0, idx), 1+"");
+                    }
+
+                }
+
+                file1 = new File(jw);
+                files = file1.listFiles();
+                for (File f : files) {
+                    String n = f.getName();
+                    int idx = n.indexOf('_');
+                    String n2 = n.substring(0, idx);
+                    if (jwMap.get(n2) != null) {
+                        jwMap.put(n2, String.valueOf(Integer.parseInt(jwMap.get(n2)) + 1));
+                    } else {
+                        jwMap.put(n.substring(0, idx), 1+"");
+                    }
+
+                }
+
+                file1 = new File(zjw);
+                files = file1.listFiles();
+                for (File f : files) {
+                    String n = f.getName();
+                    int idx = n.indexOf('_');
+                    String n2 = n.substring(0, idx);
+                    if (zjwMap.get(n2) != null) {
+                        zjwMap.put(n2, String.valueOf(Integer.parseInt(zjwMap.get(n2)) + 1));
+                    } else {
+                        zjwMap.put(n.substring(0, idx), 1+"");
+                    }
+
+                }
+
+                file1 = new File(sw);
+                files = file1.listFiles();
+                for (File f : files) {
+                    String n = f.getName();
+                    int idx = n.indexOf('_');
+                    String n2 = n.substring(0, idx);
+                    if (swMap.get(n2) != null) {
+                        swMap.put(n2, String.valueOf(Integer.parseInt(swMap.get(n2)) + 1));
+                    } else {
+                        swMap.put(n.substring(0, idx), 1+"");
+                    }
+
+                }
+
+
                 try {
                     PrintWriter printWriter = new PrintWriter(new FileOutputStream(file));
                     printWriter.write("<!DOCTYPE html>\n");
@@ -75,7 +150,7 @@ public class ZI {
                     printWriter.write("    <title>");
                     printWriter.write(zi);
                     printWriter.write("的解释，造字原理及甲骨文金文古文字，及古语用例，及说文解字 - 造字法</title>\n");
-                    printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css?v=11\"/>\n");
+                    printWriter.write("    <link  type=\"text/css\" rel=\"stylesheet\" href=\"/zaozifa.css?v=13\"/>\n");
                     printWriter.write("    <script src=\"/zaozifa.js\"></script>\n");
                     printWriter.write("</head>\n");
                     printWriter.write("<body>\n");
@@ -103,19 +178,71 @@ public class ZI {
                     printWriter.write("        <h1>");
                     printWriter.write(zi);
                     printWriter.write("</h1>\n");
-                    printWriter.write("        <p>\n");
+                    printWriter.write("        <div id=\"zxyb\"><strong class=\"red\">本形与字形演变");
+                    printWriter.write("：</strong><br>\n");
+                    printWriter.write("        <p class=\"gwimg\">\n");
 
                     //img
-                    if (img != null) {
-                        String[] imgs = img.split(";");
-                        for (int i = 0; i < imgs.length; i++) {
-                            printWriter.write("            <img src=\"/img/sw/");
-                            printWriter.write(imgs[i]);
+//                    if (img != null) {
+//                        String[] imgs = img.split(";");
+//                        for (int i = 0; i < imgs.length; i++) {
+//                            printWriter.write("            <img src=\"/img/");
+//                            printWriter.write(imgs[i]);
+//                            printWriter.write("\"/>\n");
+//                        }
+//                    }
+                    //img 修改
+                    if (jjwMap.get(id + "") != null) {
+                        int n = Integer.parseInt(jjwMap.get(id + ""));
+                        for (int i = 0; i < n; i++) {
+                            printWriter.write("            <img src=\"/img/jjw/");
+                            printWriter.write(String.valueOf(id));
+                            printWriter.write("_");
+                            printWriter.write(String.valueOf(i));
+                            printWriter.write("2x.png");
                             printWriter.write("\"/>\n");
-                            System.out.println(yin + key1);
                         }
                     }
+
+                    if (jwMap.get(id + "") != null) {
+                        int n = Integer.parseInt(jwMap.get(id + ""));
+                        for (int i = 0; i < n; i++) {
+                            printWriter.write("            <img src=\"/img/jw/");
+                            printWriter.write(String.valueOf(id));
+                            printWriter.write("_");
+                            printWriter.write(String.valueOf(i));
+                            printWriter.write("2x.png");
+                            printWriter.write("\"/>\n");
+                        }
+                    }
+
+                    if (zjwMap.get(id + "") != null) {
+                        int n = Integer.parseInt(zjwMap.get(id + ""));
+                        for (int i = 0; i < n; i++) {
+                            printWriter.write("            <img src=\"/img/zjw/");
+                            printWriter.write(String.valueOf(id));
+                            printWriter.write("_");
+                            printWriter.write(String.valueOf(i));
+                            printWriter.write("2x.png");
+                            printWriter.write("\"/>\n");
+                        }
+                    }
+
+                    if (swMap.get(id + "") != null) {
+                        int n = Integer.parseInt(swMap.get(id + ""));
+                        for (int i = 0; i < n; i++) {
+                            printWriter.write("            <img src=\"/img/sw/");
+                            printWriter.write(String.valueOf(id));
+                            printWriter.write("_");
+                            printWriter.write(String.valueOf(i));
+                            printWriter.write("2x.png");
+                            printWriter.write("\"/>\n");
+                        }
+                    }
+
+
                     printWriter.write("</p>\n");
+                    printWriter.write("</div>\n");
 
                     printWriter.write("        <p class=\"green\"><strong class=\"red\">发声：</strong>");
                     printWriter.write(yin==null?"":yin);
@@ -126,20 +253,32 @@ public class ZI {
                     printWriter.write("        <p class=\"green\"><strong class=\"red\">象形码：</strong>");
                     printWriter.write(key1==null?"":key1);
                     printWriter.write("</p>\n");
-                    printWriter.write("        <p><strong class=\"red\">【造字法】");
+
+                    printWriter.write("        <div id=\"zzf\"><strong class=\"red\">【造字法】");
                     printWriter.write(zi);
-                    printWriter.write("：</strong>");
+                    printWriter.write("：</strong><br>\n");
+                    printWriter.write("            <p>\n");
                     printWriter.write(comments);
                     printWriter.write("</p>\n");
-                    printWriter.write("        <p><strong class=\"meta\">【说文解字】");
+                    printWriter.write("        </div>\n");
+
+                    printWriter.write("        <div id=\"swjz\"><strong class=\"red\">【说文解字】");
                     printWriter.write(zi);
-                    printWriter.write("：</strong>");
+                    printWriter.write("：</strong><br>\n");
+                    printWriter.write("            <p>\n");
                     printWriter.write(js);
                     printWriter.write("<p>\n");
+                    printWriter.write("        </div>\n");
+
                     printWriter.write("        <div id=\"kxzd\"><strong class=\"meta\">【康熙字典】");
                     printWriter.write(zi);
                     printWriter.write("：</strong><br>\n");
                     printWriter.write("            <p>\n");
+
+                    //
+                    if (kx != null)
+                        kx = kx.replaceAll("\r\n\r\n", "<br><br>");
+
                     printWriter.write(kx == null ?"":kx);
                     printWriter.write("</p>\n");
                     printWriter.write("        </div>\n");
@@ -154,7 +293,28 @@ public class ZI {
                     printWriter.write(kouyu == null?"":kouyu);
                     printWriter.write("</p>\n");
                     printWriter.write("        </div>\n");
+
+                    printWriter.write("        <div id=\"hyyf\"><strong class=\"meta\">【汉语语法】");
+                    printWriter.write(zi);
+                    printWriter.write("：</strong><br>\n");
+                    printWriter.write("            <p>\n");
+
+                    if (cizu != null) {
+                        String[] strings = cizu.split("；");
+                        for (String c : strings) {
+                            printWriter.write("<a href=\"/hanyuyufa/");
+                            printWriter.write(c);
+                            printWriter.write(".html\">");
+                            printWriter.write(c);
+                            printWriter.write("</a>");
+                        }
+                    }
+
+                    printWriter.write("</p>\n");
+                    printWriter.write("        </div>\n");
                     printWriter.write("    </div>\n");
+
+
                     printWriter.write("    <div style=\"padding: 2em\">\n");
                     printWriter.write("        <a href=\"/dasang.html\">赏</a>\n");
                     printWriter.write("    </div>\n");
@@ -172,6 +332,9 @@ public class ZI {
                     printWriter.write("</body>\n");
                     printWriter.write("</html>");
                     printWriter.flush();
+
+//                    System.out.println("https://www.zaozifa.com/"+yin+"/" + key1+".html");
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }

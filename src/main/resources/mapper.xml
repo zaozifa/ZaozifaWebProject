@@ -9,7 +9,8 @@
     </select>
 
     <select id="queryMap" parameterType="int" resultType="map">
-        SELECT id,zi from sw;
+        SELECT id,zi from sw where id >= 50615 and
+        js is not null and js <![CDATA[<>]]> '' or (id >= 50615 and comments is not null and comments <![CDATA[<>]]> '')
     </select>
 
     <update id="updateAlike" parameterType="string">
@@ -21,7 +22,7 @@
     </select>
 
     <select id="allHanz" resultType="map">
-        select id,zi,yin,key1,kouyu,js,comments,jian,kx,img from sw
+        select id,zi,yin,key1,kouyu,js,comments,jian,kx,img,cizu2 from sw
         where js is not null and js <![CDATA[<>]]> '' and comments  <![CDATA[<>]]> '' and comments is not null
     </select>
 
@@ -46,4 +47,42 @@
     <update id="updateimg" parameterType="map">
         update sw set img = #{img} where zi like '%${zi}%' and zi not like '%【%'
     </update>
+
+    <select id="selectBook" parameterType="string">
+        select id,juzi from book where bookName = #{bookName}
+    </select>
+
+    <select id="selectBookAll" resultType="map">
+        select id,juzi from book
+    </select>
+
+    <select id="selectBookWithCizu" parameterType="string" resultType="map">
+        select id,juzi,lineIndex,bookName from book where juzi like '%${cizu}%' order by LENGTH(country),country
+    </select>
+
+    <select id="selectBookWithlineIndex1" parameterType="string" resultType="map">
+        select id,juzi,bookName from book where bookName = #{bookName} and lineIndex = #{lineIndex}
+
+    </select>
+
+    <select id="selectBookWithlineIndex2" parameterType="string" resultType="map">
+        select id,juzi,bookName from book where bookName = #{bookName} and lineIndex <![CDATA[>]]> #{lineIndex} limit 1
+
+    </select>
+
+    <insert id="addBook" parameterType="map">
+        insert into book (juzi,lineIndex,bookName,like1) value (#{juzi},#{lineIndex},#{bookName},#{like})
+    </insert>
+
+    <update id="updateBook" parameterType="map">
+        update book set like = #{like} where lineIndex=#{lineIndex} and bookName =#{bookName}
+    </update>
+
+    <update id="updatecizu" parameterType="map" >
+        update sw set cizu2 = concat(IFNULL(cizu2,''), #{cizu}) where zi like '%${zi}%'
+    </update>
+
+    <select id="selectCZZI" parameterType="string" resultType="int">
+        select count(1) from sw where  zi like '%${zi}%'
+    </select>
 </mapper>
