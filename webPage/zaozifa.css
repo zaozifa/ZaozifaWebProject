@@ -43,8 +43,19 @@ button, input {
     text-align: center;
 }
 
-#kxzd p, #gswy p {
+.gwimg img{
+    width: 64px;
+    height: 64px;
+    display:inline;
+}
+
+#zzf p, #swjz p, #kxzd p, #gswy p, #hyyf p {
     padding-left: 2em;
+}
+
+#hyyf a {
+    margin-right: 4em;
+    white-space:nowrap;
 }
 
 #xxpage ul{
@@ -62,5 +73,10 @@ button, input {
         width: fit-content;
         padding: 10px 20px;
         font-size:20px;
+    }
+
+    #hyyf a {
+        margin-right: 2em;
+        white-space:normal;
     }
 }

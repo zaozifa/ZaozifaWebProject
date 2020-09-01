@@ -30,3 +30,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+*.zip
+*.tar
+cizu
+/cizu/
+/webPage/img/
+/webPage/hanyuyufa/
+/webPage/cizu/
+Getziimg.java
+SVG2PNG.java
